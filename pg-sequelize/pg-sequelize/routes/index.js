@@ -1,7 +1,7 @@
+const routes = require('../../../basic-express/routes');
+
 const route = require('express').Router()
 
-route.get('/', (req,res) => {
-    res.send("Selamat pagi guys");
-});
-
+route.use("/users", userRoutes);
+routes.use("/items", ItemRoutes);
 module.exports = route;
