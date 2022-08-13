@@ -86,7 +86,7 @@ code UserController.js
 
 #7. Masukkan code berikut pada file index.js
 
-```
+```javascript
 const routes = require('express').Router();
 const ItemRoutes = require("./item");
 const userRoutes = require("./user");
@@ -102,7 +102,7 @@ module.exports = routes;
 
 #8. Masukkan code berikut pada file item.js
 
-```
+```javascript
 //code yang wajib dimasukkan ke dalam model item.js
 
 const ItemController = require('../controllers/ItemController');
@@ -117,7 +117,7 @@ module.exports = itemRoutes;
 
 #9. Masukkan code berikut pada file user.js
 
-```
+```javascript
 //code yang wajib dimasukkan ke dalam model user.js
 
 cosnt UserController = require(../controllers/UserController);
@@ -132,7 +132,7 @@ module.exports = userRoutes;
 
 #10. Masukkan code berikut pada file ItemController.js
 
-```
+```javascript
 class ItemController {
     static getItems(req, res) {
         res.send("Item Page");
@@ -148,7 +148,7 @@ module.exports = ItemController;
 
 #11. Masukkan code berikut pada file UserController.js
 
-```
+```javascript
 class UserController {
     static getUsers(req ,res) {
         res.send("Users Page");
@@ -216,7 +216,7 @@ npx sequelize-cli db:migrate
 
 #Untuk menampilkan dan menambahkan data dari body postman
 
-```
+```javascript
 static getUsers(req, res) {
     user
         .findAll()
@@ -248,22 +248,24 @@ static addData(req, res) {
 
 #Untuk select specific data dan menggunakan conditional
 
-```
+```javascript
 static getInfo(req, res) {
     const id = Number(req.params.id);
 
-    user.findByPk(id);
-    .then((result) => {
-        if (!result) {
-            res.send({
-                message: `ID ${id} is not found"
-            })
-        }
-        else {
-            res.send(result);
-        }
-    })
-    .catch((err) => res.send(err));
+    user
+        .findByPk(id);
+        .then((result) => {
+            if (!result) {
+                res.send({
+                    message: `ID ${id} is not found`,
+                })
+            }
+            else {
+                res.send(result);
+            }
+        })
+        .catch((err) => res.send(err));
+        
 }
 
 //atau
@@ -277,7 +279,7 @@ static findByEmail(req, res) {
 
 #Untuk menghapus data dari database
 
-```
+```javascript
 static delete(req, res) {
     const id = Number(req.params.id)
 

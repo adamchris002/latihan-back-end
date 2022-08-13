@@ -9,7 +9,8 @@ class UserController {
                 ]
             })
             .then((result) => {
-                res.send(result);
+                res.render("users/home.ejs", {users: result});
+                // res.send(result);
             })
             //.then akan memasukkan hasil dari proses sebelumnya yaitu dalam contoh ini adalah findAll();
             .catch((err) => {
@@ -86,7 +87,7 @@ class UserController {
                 })
             }
             else {
-                res.send(result);
+                res.render("users/accountPage.ejs", {user: result});
             }
             
         })
