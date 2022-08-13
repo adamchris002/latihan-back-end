@@ -17,6 +17,10 @@ class UserController {
                 res.send(err);
             })
     }
+
+    static addUser(req, res) {
+        res.render("users/createPage.ejs");
+    }
     static addData(req, res) {
         const {username, email, password, image} = req.body;
         user
@@ -24,7 +28,7 @@ class UserController {
                 username, email, password, image,
             })
             .then((result) => {
-                res.send(result);
+                res.redirect("/home.ejs")
             })
             .catch((err) => {
                 res.send(err);

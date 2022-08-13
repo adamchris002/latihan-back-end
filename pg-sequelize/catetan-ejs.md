@@ -93,7 +93,7 @@ static getUsers(req ,res) {
             ]
         })
         .then((result) => {
-            res.render("users/home.ejs");
+            res.render("users/home.ejs", {user: result});
             // res.send(result);
         })
         //.then akan memasukkan hasil dari proses sebelumnya yaitu dalam contoh ini adalah findAll();
@@ -101,5 +101,6 @@ static getUsers(req ,res) {
             res.send(err);
         })
 }
+//pastikan hanya ada 1 res saja
 ```
 
