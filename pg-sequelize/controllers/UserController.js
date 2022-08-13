@@ -3,7 +3,11 @@ const {user} = require('../models');
 class UserController {
     static getUsers(req ,res) {
         user
-            .findAll()
+            .findAll({
+                order: [
+                    ['id', 'asc']
+                ]
+            })
             .then((result) => {
                 res.send(result);
             })

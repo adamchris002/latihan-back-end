@@ -27,6 +27,13 @@ npm install sequelize
 npm install sequelize-cli
 ```
 
+#Catetan
+
+```
+// pada file config.json jangan lupa untuk mengganti username dan password menjadi yang sesuai di dbeaveratau ssms
+//serta jangan lupa untuk mengganti dialect menjadi postgre
+```
+
 #3. Buatlah file app.js dan file .gitignore
 
 ```
@@ -39,6 +46,7 @@ code app.js
 #4. Masukkanlah code berikut dalam file app.js
 
 ```
+//ini adalah code yang digunakan untuk mengimport express yang akan digunakan untuk membuat api
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -63,6 +71,7 @@ mkdir views, controllers, routes
 
 ```
 cd routes
+code index.js
 code item.js
 code user.js
 ```
@@ -273,7 +282,11 @@ static delete(req, res) {
     const id = Number(req.params.id)
 
     user
-        .destroy(id)
+        .destroy({
+            where: {
+                id
+            }
+        })
         .then((result) => {
             if (result) {
                 res.send(`ID ${id} is deleted`);

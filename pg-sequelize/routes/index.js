@@ -3,7 +3,8 @@ const ItemRoutes = require("./item");
 const userRoutes = require("./user");
 
 routes.get("/", (req, res) => {
-    res.send("ini adalah halaman paling awal");
+    res.render('index.ejs');
+    // res.send("ini adalah halaman paling awal");
 });
 
 routes.use("/users", userRoutes);
